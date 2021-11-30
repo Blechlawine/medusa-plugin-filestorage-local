@@ -4,13 +4,13 @@ import fs from "fs";
 class FileStorageService extends FileService {
     constructor({}, config) {
         super();
-        this.fileLocation = "uploads/persistent/";
         if (!fs.existsSync(this.fileLocation)) {
             fs.mkdirSync(this.fileLocation);
         }
         this.config = {
             serverBaseUrl: "http://localhost:9000",
             saveInDatabase: false,
+            fileLocation: "uploads/persistent",
             ...config,
         };
     }
@@ -25,10 +25,10 @@ class FileStorageService extends FileService {
                     url: `data:${file.mimetype};base64, ${data.toString("base64")}`,
                 });
             } else {
-                fs.copyFile(file.path, "uploads/persistent/" + file.filename, (err) => {
+                fs.copyFile(file.path, this.config.fileLocation + file.filename, (err) => {
                     if (err) throw err;
                     resolve({
-                        url: this.config.serverBaseUrl + "/uploads/persistent/" + file.filename,
+                        url: this.config.serverBaseUrl + "/" + this.config.fileLocation + file.filename,
                     });
                 });
             }
