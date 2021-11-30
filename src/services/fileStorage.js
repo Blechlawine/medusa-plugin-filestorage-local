@@ -17,7 +17,6 @@ class FileStorageService extends FileService {
 
     // saves the image as a base64 encoded string in the database (in the url column)
     upload(file) {
-        console.log(file);
         return new Promise((resolve, reject) => {
             if (this.config.saveInDatabase) {
                 let data = fs.readFileSync(file.path, { encoding: "base64" });
