@@ -4,15 +4,15 @@ import fs from "fs";
 class FileStorageService extends FileService {
     constructor({}, config) {
         super();
-        if (!fs.existsSync(this.fileLocation)) {
-            fs.mkdirSync(this.fileLocation);
-        }
         this.config = {
             serverBaseUrl: "http://localhost:9000",
             saveInDatabase: false,
             fileLocation: "uploads/persistent",
             ...config,
         };
+        if (!fs.existsSync(this.config.fileLocation)) {
+            fs.mkdirSync(this.config.fileLocation);
+        }
     }
 
     // saves the image as a base64 encoded string in the database (in the url column)
