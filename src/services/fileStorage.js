@@ -27,7 +27,7 @@ class FileStorageService extends FileService {
                 fs.copyFile(file.path, this.config.fileLocation + file.filename, (err) => {
                     if (err) throw err;
                     resolve({
-                        url: this.config.serverBaseUrl + "/" + this.config.fileLocation + file.filename,
+                        url: this.config.serverBaseUrl + "/uploads/persistent/" + file.filename,
                     });
                 });
             }
@@ -35,9 +35,20 @@ class FileStorageService extends FileService {
     }
 
     delete(file) {
-        // The Promise resolve value is ignored
-        console.log(file);
-        return Promise.resolve("deleted");
+        return new Promise((resolve, reject) => {
+            // The Promise resolve value is ignored
+            console.log(file);
+            if (!this.config.saveInDatabase) {
+                // delete the file
+                fs.unlink(file.path, (err) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve("deleted");
+                    }
+                });
+            }
+        });
     }
 }
 
