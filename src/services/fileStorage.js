@@ -7,7 +7,7 @@ class FileStorageService extends FileService {
         this.config = {
             serverBaseUrl: "http://localhost:9000",
             saveInDatabase: false,
-            fileLocation: "uploads/persistent",
+            fileLocation: "uploads/persistent/",
             ...config,
         };
         if (!fs.existsSync(this.config.fileLocation)) {
