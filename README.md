@@ -4,10 +4,19 @@ This repo provides the plugin to get you started serving images using your files
 
 ## Adding plugin to Medusa.js Core
 
-1. `yarn add https://github.com/Blechlawine/medusa-plugin-filestorage-local.git`
-2. Register the plugin in `medusa-config.js`
+1. Download the [package](https://www.npmjs.com/package/medusa-plugin-filestorage-local)
 
-Default configuration
+
+```
+npm install medusa-plugin-filestorage-local
+pnpm install medusa-plugin-filestorage-local
+yarn add medusa-plugin-filestorage-local
+```
+
+2. Register it in the `medusa-config.js`
+
+### Default configuration
+
 ```js
 const plugins = [
   ...
@@ -23,4 +32,5 @@ const plugins = [
     }
   },
   ...
+]
 ```
