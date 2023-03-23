@@ -1,10 +1,10 @@
 import express from "express";
-const {Router} = express;
+const { Router } = express;
 
 export default () => {
-    const router = Router();
+	const router = Router();
 
-    router.use("/uploads/persistent", express.static("uploads/persistent"));
-    
-    return router;
+	router.use("/uploads/persistent", express.static("uploads/persistent"));
+
+	return router;
 };
