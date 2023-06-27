@@ -1,3 +1,9 @@
+# ❗ Update (v0.1.3) ❗:
+
+This is no longer maintained, as there is an official package for local filestorage now: [@medusajs/file-local](https://www.npmjs.com/package/@medusajs/file-local).
+
+---
+
 # Local filestorage Medusa plugin
 
 This repo provides the plugin to get you started serving images using your filesystem. Follow the steps below to get ready. Store your images locally on your installation of [Medusa](https://github.com/medusajs/medusa) e-commerce.
